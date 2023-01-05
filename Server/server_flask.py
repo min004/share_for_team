@@ -1,21 +1,18 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-@app.route('/')
-def root():
-    parameter_dict = request.args.to_dict()
-    if len(parameter_dict) == 0:
-        return 'No parameter'
 
-    parameters = ''
-    for key in parameter_dict.keys():
-        parameters += 'key: {}, value: {}<br>'.format(key, request.args[key])
-    return parameters
+@app.route('/userLogin', methods=['POST'])
+def userLogin():
+    user = request.get_json()  # json 데이터를 받아옴
+    return jsonify(user)  # 받아온 데이터를 다시 전송
 
-@app.route('/register', method=['POST'])
-def get_user_information()
 
-if __name__ == '__main__':
-    app.debug = True
-    app.run(degug=True, host='0.0.0.0', port=port)
+@app.route('/environments/<language>')
+def environments(language):
+    return jsonify({"language": language})
+
+
+if __name__ == "__main__":
+    app.run()
