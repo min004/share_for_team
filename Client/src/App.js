@@ -15,6 +15,7 @@ function App() {
 
   return (
     <div className="App">
+      
       {
         currentForm === "login" & currentStatus === "logged out" 
         ? <Login onFormSwitch={toggleForm} /> : (

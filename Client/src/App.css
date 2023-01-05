@@ -1,3 +1,9 @@
+.TopBar {
+  text-align: center;
+  height: 100px;
+  background-color: #ffffff;
+}
+
 .App {
   text-align: center;
   display: flex;
@@ -38,7 +44,7 @@ input {
   margin: 0.2rem 0;
   padding-left: 1rem;
   padding-right: 1rem;
-  border: 1px solid #46536B;
+  border: 1px solid #d4b675;
   border-radius: 999px;
   height: 30px;
 }
@@ -46,22 +52,21 @@ input {
 
 button {
   border: none;
-  background-color: '#43AFF4';
+  background-color: #46536B;
   margin-top: 0.4rem;
   /* padding: 20px; */
   border-radius: 999px;
   cursor: pointer;
-  /* color: 'white'; */
+  color: #ffffff;
   height: 30px;
 }
 
 .link-btn {
   /* background: none; */
-  color: '#43AFF4';
-  margin-top: 0.8rem;
-  /* text-decoration: underline; */
+  margin-top: 0.4rem;
   border-radius: 999px;
   cursor: pointer;
-  /* color: 'white'; */
+  background-color: #46536B;
+  color: #ffffff;
   height: 30px;
 }

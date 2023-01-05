@@ -16,13 +16,32 @@ export const Register = (props) => {
     function onSubmit(e) {
         e.preventDefault();
         console.log(ID)
+            // fetch('http://localhost:9599/register/', {
+            // method: 'POST',
+            // headers: {
+            //     'Content-Type': 'application/json',
+            //     mode:'no-cors'
+            // },
+            // body: JSON.stringify({
+            //     'ID': ID,
+            //     'pass': pass,
+            //     'name': name,
+            //     'email': email
+            // })
+            // })
+            // .then(response => response.json())
+            // .then(response => {
+            // if (response.token) {
+            //     localStorage.setItem('wtw-token', response.token);
+            // }
+            // })
         let data = {
             id: ID,
             pw: pass,
             name: name,
             email: email
-        }
-        axios.post('http://localhost:5000/register',
+        } 
+        axios.post('/register',
               JSON.stringify(data), {
           headers: {
             "Content-Type": `application/json`,

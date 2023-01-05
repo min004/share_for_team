@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from './logo.png';
+// import logo from './logo.png';
 import axios from 'axios';
 
 export const Login = (props) => {
@@ -14,29 +14,27 @@ export const Login = (props) => {
     function onlogin(e) {
         e.preventDefault();
         console.log(ID)
+        // fetch('http://localhost:9599/login/', {
+        // method: 'POST',
+        // headers: {
+        //     'Content-Type': 'application/json',
+        // },
+        // body: JSON.stringify({
+        //     'ID': ID,
+        //     'pass': pass
+        // })
+        // })
+        // .then(response => response.json())
+        // .then(response => {
+        // if (response.token) {
+        //     localStorage.setItem('wtw-token', response.token);
+        // }
+        // })
         let data = {
             id: ID,
-            pw: pass
-        }
-        axios.get('http://localhost:5000/login',
-              JSON.stringify(data), {
-          headers: {
-            "Content-Type": `application/json`,
-          },
-        })
-        .then((res) => {
-          console.log(res);
-        });
-    }
-
-    function onregister(e) {
-        e.preventDefault();
-        console.log(ID)
-        let data = {
-            id: ID,
-            pw: pass
-        }
-        axios.post('http://localhost:5000/register',
+            pw: pass,
+        } 
+        axios.post('/login',
               JSON.stringify(data), {
           headers: {
             "Content-Type": `application/json`,
