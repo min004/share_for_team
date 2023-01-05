@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios';
 
 export const Register = (props) => {
     const [email, setEmail] = useState('');
@@ -12,23 +13,75 @@ export const Register = (props) => {
         console.log(email);
     }
 
+    function onSubmit(e) {
+        e.preventDefault();
+        console.log(ID)
+        let data = {
+            id: ID,
+            pw: pass
+        }
+        axios.post('http://localhost:5000/register',
+              JSON.stringify(data), {
+          headers: {
+            "Content-Type": `application/json`,
+          },
+        })
+        .then((res) => {
+          console.log(res);
+        });
+        /////////////////////////////////////////
+        // axios.post("http://localhost:9599/register", {
+        //     userId: ID,
+        //     password: pass,
+        //     name: name,
+        //     email: email
+        
+        // }).then(function (response) {
+        //     // if(response.data.code == 0){
+        //     //     setPopup({
+        //     //         open: true,
+        //     //         title: "Confirm",
+        //     //         message: "Join Success!", 
+        //     //         callback: function(){
+        //     //             navigate("/login");
+        //     //         }
+        //     //     });
+        //     // } else {
+        //     //     let message = response.data.message;
+        //     //     if(response.data.code == 10000){
+        //     //         message = "User ID is duplicated. Please enter a different User ID. "
+        //     //     }
+        //     //     setPopup({
+        //     //         open: true,
+        //     //         title: "Error",
+        //     //         message: message
+        //     //     });
+        //     // }
+        //     console.log(response)
+        // }).catch(function (error) {
+        //     console.log(error);
+        // });
+    
+    }
+
     return (
         <div className="auth-form-container">
             <h2>Register</h2>
         <form className="register-form" onSubmit={handleSubmit}>
             {/* <label htmlFor="name">Name</label> */}
             
-            {/* <label htmlFor="email">email</label> */}
-            <input value={email} name="email" onChange={(e) => setEmail(e.target.value)}type="ID" placeholder="ID" id="ID" name="ID" />
+            <label htmlFor="id">ID/PW</label>
+            <input value={ID} name="ID" onChange={(e) => setID(e.target.value)}type="ID" placeholder="ID" id="ID"/>
             <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="Password" id="password" name="password" />
-            <input value={passvar} onChange={(e) => setPassvar(e.target.value)} type="password" placeholder="Verify Password" id="password" name="password" />
-            <input style={{marginTop: 20}} value={name} name="name" onChange={(e) => setName(e.target.value)} id="name" placeholder="Name" />
-            <input value={ID} name="ID" onChange={(e) => setID(e.target.value)}type="email" placeholder="e-mail" id="email" name="email" />
+            <input style={{marginBottom: 20}} value={passvar} onChange={(e) => setPassvar(e.target.value)} type="password" placeholder="Verify Password" id="passwordvar" name="passwordvar" />
+            <label htmlFor="info">INFO</label>
+            <input value={name} name="name" onChange={(e) => setName(e.target.value)} id="name" placeholder="Name" />
+            <input value={email} name="email" onChange={(e) => setEmail(e.target.value)}type="email" placeholder="e-mail" id="email"/>
             {/* <label htmlFor="password">password</label> */}
             
-            <button type="submit">Submit</button>
+            <button type="submit" onClick={onSubmit}>Submit</button>
         </form>
-        <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Login</button>
+        <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Back</button>
     </div>
     )
 }
