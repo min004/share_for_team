@@ -34,7 +34,7 @@ export const Login = (props) => {
             id: ID,
             pw: pass,
         } 
-        axios.post('/login',
+        axios.post('http://localhost:5000/login',
               JSON.stringify(data), {
           headers: {
             "Content-Type": `application/json`,
