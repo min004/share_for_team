@@ -60,7 +60,7 @@ def read(id):
     return template(getContents(), f'<h2>{title}</h2>{body}', id)
 
 
-@app.route('/register/', methods=['GET', 'POST'])
+@app.route('/login/', methods=['GET', 'POST'])
 def create():
     if request.method == 'GET':
         content = '''
@@ -77,7 +77,7 @@ def create():
         body = request.form['body']
         newTopic = {'id': nextId, 'title': title, 'body': body}
         topics.append(newTopic)
-        url = '/read/'+str(nextId)+'/'
+        url = '/login/'+str(nextId)+'/'
         nextId = nextId + 1
         return redirect(url)
 

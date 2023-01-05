@@ -18,9 +18,11 @@ export const Register = (props) => {
         console.log(ID)
         let data = {
             id: ID,
-            pw: pass
+            pw: pass,
+            name: name,
+            email: email
         }
-        axios.post('http://localhost:5000/register',
+        axios.post('http://localhost:9599/register',
               JSON.stringify(data), {
           headers: {
             "Content-Type": `application/json`,
