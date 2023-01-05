@@ -3,10 +3,15 @@
 FROM node:latest
 # Set the working directory to /app inside the container
 WORKDIR /app
+# add 
+# ENV PATH /app/node_modules/.bin:$PATH
 # 
+COPY package-lock.json ./
+#
 COPY package.json ./
 #
-RUN npm install react-router-dom
+RUN npm install 
+# RUN npm install react-router-dom
 # 
 COPY . . 
 # 
