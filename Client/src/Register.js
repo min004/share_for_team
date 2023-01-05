@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import Popup from './Popup';
 
 export const Register = (props) => {
     const [email, setEmail] = useState('');
@@ -7,6 +9,8 @@ export const Register = (props) => {
     const [name, setName] = useState('');
     const [passvar, setPassvar] = useState('');
     const [ID, setID] = useState('');
+    const [popup, setPopup] = useState({open: false, title: "", message: "", callback: false});
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -16,25 +20,6 @@ export const Register = (props) => {
     function onSubmit(e) {
         e.preventDefault();
         console.log(ID)
-            // fetch('http://localhost:9599/register/', {
-            // method: 'POST',
-            // headers: {
-            //     'Content-Type': 'application/json',
-            //     mode:'no-cors'
-            // },
-            // body: JSON.stringify({
-            //     'ID': ID,
-            //     'pass': pass,
-            //     'name': name,
-            //     'email': email
-            // })
-            // })
-            // .then(response => response.json())
-            // .then(response => {
-            // if (response.token) {
-            //     localStorage.setItem('wtw-token', response.token);
-            // }
-            // })
         let data = {
             id: ID,
             pw: pass,
@@ -47,8 +32,30 @@ export const Register = (props) => {
             "Content-Type": `application/json`,
           },
         })
-        .then((res) => {
-          console.log(res);
+        .then(function (response) {
+                if(response.data.code == 0){
+                    setPopup({
+                        open: true,
+                        title: "Confirm",
+                        message: "가입 완료", 
+                        callback: function(){
+                            navigate("/Login");
+                        }
+                    });
+                } else {
+                    let message = response.data.message;
+                    if(response.data.code == 10000){
+                        message = "User ID is duplicated. Please enter a different User ID. "
+                    }
+                    setPopup({
+                        open: true,
+                        title: "Error",
+                        message: message
+                    });
+                }
+                console.log(response)
+            }).catch(function (error) {
+                console.log(error);
         });
         /////////////////////////////////////////
         // axios.post("http://localhost:9599/register", {

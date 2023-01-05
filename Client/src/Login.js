@@ -14,22 +14,7 @@ export const Login = (props) => {
     function onlogin(e) {
         e.preventDefault();
         console.log(ID)
-        // fetch('http://localhost:9599/login/', {
-        // method: 'POST',
-        // headers: {
-        //     'Content-Type': 'application/json',
-        // },
-        // body: JSON.stringify({
-        //     'ID': ID,
-        //     'pass': pass
-        // })
-        // })
-        // .then(response => response.json())
-        // .then(response => {
-        // if (response.token) {
-        //     localStorage.setItem('wtw-token', response.token);
-        // }
-        // })
+        
         let data = {
             id: ID,
             pw: pass,
