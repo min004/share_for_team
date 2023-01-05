@@ -23,16 +23,29 @@
 
 
 ###################################################################################################################################################
-1. Client <-> Server 연결
+0. Client
 * 3000
-* -> port number
+* log가 안 뜹니다.
+
+
+
+1. Client <-> Server 연결
+* 3000 -> 5000
 * docker 
     * Dockerfile
     * dockerignore
 
-2. Server <-> DataBase 연결
+
+
+2. Flask
+* 5000
+* post 받아와야 합니다.
+
+
+3. Server <-> DataBase 연결
 * 5000
 * -> port number
 
 
+4. DataBase
 * 5432

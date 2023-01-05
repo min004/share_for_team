@@ -22,7 +22,7 @@ export const Register = (props) => {
             name: name,
             email: email
         }
-        axios.post('http://localhost:9599/register',
+        axios.post('http://localhost:5000/register',
               JSON.stringify(data), {
           headers: {
             "Content-Type": `application/json`,
