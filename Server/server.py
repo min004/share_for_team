@@ -1,13 +1,16 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, request
 
 app = Flask(__name__)
 
 
-@app.route('/userLogin', methods=['POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def userLogin():
-    user = request.get_json()  # json 데이터를 받아옴
+    if request.method=="GET":
+        user = request.get_json()  # json 데이터를 받아옴
+        return jsonify(user)  # 받아온 데이터를 다시 전송
+    elif request.method=="POST":
+        user = request.get_json()  # json 데이터를 받아옴
     return jsonify(user)  # 받아온 데이터를 다시 전송
-
 
 @app.route('/environments/<language>')
 def environments(language):

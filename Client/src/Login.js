@@ -18,7 +18,25 @@ export const Login = (props) => {
             id: ID,
             pw: pass
         }
-        axios.post('http://localhost:5000/login',
+        axios.get('http://localhost:5000/login',
+              JSON.stringify(data), {
+          headers: {
+            "Content-Type": `application/json`,
+          },
+        })
+        .then((res) => {
+          console.log(res);
+        });
+    }
+
+    function onregister(e) {
+        e.preventDefault();
+        console.log(ID)
+        let data = {
+            id: ID,
+            pw: pass
+        }
+        axios.post('http://localhost:5000/register',
               JSON.stringify(data), {
           headers: {
             "Content-Type": `application/json`,
