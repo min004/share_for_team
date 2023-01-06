@@ -7,9 +7,14 @@ import { Hello } from "./Hello";
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
   const [currentStatus, setCurrentStatus] = useState('logged out')
+  const [popup, setPopup] = useState({open: true, title: "", message: "", callback: false});
   const toggleForm = (formName) => {
     setCurrentForm(formName);
     console.log(currentForm)
+  }
+  const loginStatus = (stat) => {
+    setCurrentStatus(stat);
+    console.log(stat)
   }
 
   return (

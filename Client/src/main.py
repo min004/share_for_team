@@ -12,13 +12,23 @@ class User(BaseModel):
     # price: float
     # tax: Union[float, None] = None
 
+class registerUser(BaseModel):
+    id: str
+    pw: str
+    name: str
+    email: str
+    
 app = FastAPI()
 
 
-@app.post("/items/")
+@app.post("/login/")
 async def login(user: User):
     return user
 
+
+@app.post("/register/")
+async def login(user: registerUser):
+    return user
 # @app.get("/")
 # def read_root():
 #     return {"Hello": "World"}
